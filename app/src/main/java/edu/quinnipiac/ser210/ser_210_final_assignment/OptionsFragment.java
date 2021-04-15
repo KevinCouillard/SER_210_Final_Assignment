@@ -46,47 +46,19 @@ public class OptionsFragment extends Fragment implements View.OnClickListener {
         Intent intent = new Intent(this.getActivity(), InfoActivity.class);
         switch (v.getId()) {
             case R.id.option_1:
-                //need to pass database values depending on option to info activity
-                /*
-                intent.putExtra();
-                intent.putExtra();
-                intent.putExtra();
-                intent.putExtra();
-                intent.putExtra();
-                 */
+                intent.putExtra("optionSelected", 1);
                 startActivity(intent);
                 break;
             case R.id.option_2:
-                //need to pass database values depending on option to info activity
-                /*
-                intent.putExtra();
-                intent.putExtra();
-                intent.putExtra();
-                intent.putExtra();
-                intent.putExtra();
-                 */
+                intent.putExtra("optionSelected", 2);
                 startActivity(intent);
                 break;
             case R.id.option_3:
-                //need to pass database values depending on option to info activity
-                /*
-                intent.putExtra();
-                intent.putExtra();
-                intent.putExtra();
-                intent.putExtra();
-                intent.putExtra();
-                 */
+                intent.putExtra("optionSelected", 3);
                 startActivity(intent);
                 break;
             case R.id.option_4:
-                //need to pass database values depending on option to info activity
-                /*
-                intent.putExtra();
-                intent.putExtra();
-                intent.putExtra();
-                intent.putExtra();
-                intent.putExtra();
-                 */
+                intent.putExtra("optionSelected", 4);
                 startActivity(intent);
                 break;
         }

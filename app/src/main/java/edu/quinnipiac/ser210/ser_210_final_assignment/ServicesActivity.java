@@ -16,6 +16,7 @@ public class ServicesActivity extends AppCompatActivity {
 
     public void start_options(View view) {
         Intent intent = new Intent(this, OptionsActivity.class);
+        intent.putExtra("placeTypeSelected", 0);
         startActivity(intent);
     }
 }
