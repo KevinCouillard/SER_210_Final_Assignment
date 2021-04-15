@@ -7,7 +7,9 @@
     tools:context=".OptionsActivity">
 
     <fragment
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        class="edu.quinnipiac.ser210.ser_210_final_assignment.OptionsFragment"
+        android:id="@+id/options_frag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
