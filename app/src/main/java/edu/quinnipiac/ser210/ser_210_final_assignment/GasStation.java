@@ -1,5 +1,8 @@
 package edu.quinnipiac.ser210.ser_210_final_assignment;
 
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+
 public class GasStation {
     private long id;
     private String name;
@@ -7,6 +10,7 @@ public class GasStation {
     private String timing;
     private String gasType;
     private double rating;
+    private String image;
 
     public long getId() {return id;}
 
@@ -31,5 +35,9 @@ public class GasStation {
     public Double getRating() {return rating;}
 
     public void setRating(Double rating) {this.rating = rating;}
+
+    public String getImage() {return image;}
+
+    public void setImage(String image) {this.image = image;}
 
 }

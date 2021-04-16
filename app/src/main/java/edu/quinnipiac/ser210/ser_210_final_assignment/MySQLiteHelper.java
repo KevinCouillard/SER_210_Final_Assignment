@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.ImageView;
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
@@ -14,6 +15,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_TIMING = "timing";
     public static final String COLUMN_GAS_TYPE = "gasType";
     public static final String COLUMN_RATING = "rating";
+    public static final String COLUMN_IMAGE = "image";
 
     public static final String DATABASE_NAME = "HamdenPlaces";
     private static final int DATABASE_VERSION = 1;
@@ -24,7 +26,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + " integer primary key autoincrement, " + COLUMN_NAME
             + " text not null, " + COLUMN_LOCATION + " text, "
             + COLUMN_TIMING + " text, " + COLUMN_GAS_TYPE
-            + " text, " + COLUMN_RATING + " double);";
+            + " text, " + COLUMN_RATING + " double, " + COLUMN_IMAGE + " text);";
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

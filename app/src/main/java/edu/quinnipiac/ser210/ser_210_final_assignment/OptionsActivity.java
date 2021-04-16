@@ -11,6 +11,7 @@ public class OptionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
+
         Button option1 = (Button) findViewById(R.id.option_1);
         Button option2 = (Button) findViewById(R.id.option_2);
         Button option3 = (Button) findViewById(R.id.option_3);

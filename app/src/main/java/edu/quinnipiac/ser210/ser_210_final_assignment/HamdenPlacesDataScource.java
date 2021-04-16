@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +16,15 @@ public class HamdenPlacesDataScource {
     // Database fields
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
+
     private String[] allGasStationColumns = {
             MySQLiteHelper.COLUMN_ID,
             MySQLiteHelper.COLUMN_NAME,
             MySQLiteHelper.COLUMN_LOCATION,
             MySQLiteHelper.COLUMN_TIMING,
             MySQLiteHelper.COLUMN_GAS_TYPE,
-            MySQLiteHelper.COLUMN_RATING };
+            MySQLiteHelper.COLUMN_RATING,
+            MySQLiteHelper.COLUMN_IMAGE };
 
     public HamdenPlacesDataScource(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -29,6 +32,7 @@ public class HamdenPlacesDataScource {
 
     public void open () throws SQLException {
         database = dbHelper.getWritableDatabase();
+        dbHelper.onUpgrade(database,1,2);
     }
 
     public SQLiteDatabase getDatabase() {return database;}
@@ -37,13 +41,14 @@ public class HamdenPlacesDataScource {
         dbHelper.close();
     }
 
-    public GasStation createDetails(String name, String location, String timing, String gasType, String rating) {
+    public GasStation createDetails(String name, String location, String timing, String gasType, String rating, String image) {
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_NAME, name);
         values.put(MySQLiteHelper.COLUMN_LOCATION, location);
         values.put(MySQLiteHelper.COLUMN_TIMING, timing);
         values.put(MySQLiteHelper.COLUMN_GAS_TYPE, gasType);
         values.put(MySQLiteHelper.COLUMN_RATING, rating);
+        values.put(MySQLiteHelper.COLUMN_IMAGE, image);
         long insertID = database.insert(MySQLiteHelper.TABLE_GAS_STATIONS,null,values);
         Cursor cursor = database.query(MySQLiteHelper.TABLE_GAS_STATIONS,allGasStationColumns,MySQLiteHelper.COLUMN_ID + " = " + insertID,null,null,null,null);
         cursor.moveToFirst();
@@ -73,7 +78,9 @@ public class HamdenPlacesDataScource {
         newGasStation.setTiming(cursor.getString(3));
         newGasStation.setGasType(cursor.getString(4));
         newGasStation.setRating(cursor.getDouble(5));
+        newGasStation.setImage(cursor.getString(6));
         return newGasStation;
     }
+
 
 }
