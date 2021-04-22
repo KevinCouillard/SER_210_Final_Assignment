@@ -16,7 +16,21 @@ public class ServicesActivity extends AppCompatActivity {
 
     public void start_options(View view) {
         Intent intent = new Intent(this, OptionsActivity.class);
-        intent.putExtra("placeTypeSelected", 0);
-        startActivity(intent);
+
+        switch (view.getId()) {
+            case R.id.gas_stations:
+                intent.putExtra("placeTypeSelected", 0);
+                startActivity(intent);
+                break;
+            case R.id.restaurants:
+                intent.putExtra("placeTypeSelected", 1);
+                startActivity(intent);
+                break;
+            case R.id.parks:
+                intent.putExtra("placeTypeSelected", 2);
+                startActivity(intent);
+                break;
+        }
+
     }
 }

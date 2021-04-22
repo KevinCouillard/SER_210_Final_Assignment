@@ -8,12 +8,33 @@
 
     <Button
         android:id="@+id/gas_stations"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         android:text="Gas Stations"
         android:textSize="30dp"
         android:onClick="start_options"/>
+
+    <Button
+        android:id="@+id/restaurants"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:text="Restaurants"
+        android:textSize="30dp"
+        android:onClick="start_options"/>
+
+    <Button
+        android:id="@+id/parks"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:text="Parks"
+        android:textSize="30dp"
+        android:onClick="start_options"/>
+
 
 </LinearLayout>

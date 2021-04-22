@@ -12,32 +12,32 @@ public class GasStation {
     private double rating;
     private String image;
 
-    public long getId() {return id;}
+    public long getGasId() {return id;}
 
-    public void setId(long id) {this.id = id;}
+    public void setGasId(long id) {this.id = id;}
 
-    public String getName() {return name;}
+    public String getGasName() {return name;}
 
-    public void setName(String name) {this.name = name;}
+    public void setGasName(String name) {this.name = name;}
 
-    public String getLocation() {return location;}
+    public String getGasLocation() {return location;}
 
-    public void setLocation(String location) {this.location = location;}
+    public void setGasLocation(String location) {this.location = location;}
 
-    public String getTiming() {return timing;}
+    public String getGasTiming() {return timing;}
 
-    public void setTiming(String timing) {this.timing = timing;}
+    public void setGasTiming(String timing) {this.timing = timing;}
 
     public String getGasType() {return gasType;}
 
     public void setGasType(String gasType) {this.gasType = gasType;}
 
-    public Double getRating() {return rating;}
+    public Double getGasRating() {return rating;}
 
-    public void setRating(Double rating) {this.rating = rating;}
+    public void setGasRating(Double rating) {this.rating = rating;}
 
-    public String getImage() {return image;}
+    public String getGasImage() {return image;}
 
-    public void setImage(String image) {this.image = image;}
+    public void setGasImage(String image) {this.image = image;}
 
 }

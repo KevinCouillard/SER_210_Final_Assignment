@@ -18,13 +18,31 @@ public class HamdenPlacesDataScource {
     private MySQLiteHelper dbHelper;
 
     private String[] allGasStationColumns = {
-            MySQLiteHelper.COLUMN_ID,
-            MySQLiteHelper.COLUMN_NAME,
-            MySQLiteHelper.COLUMN_LOCATION,
-            MySQLiteHelper.COLUMN_TIMING,
+            MySQLiteHelper.COLUMN_GAS_ID,
+            MySQLiteHelper.COLUMN_GAS_NAME,
+            MySQLiteHelper.COLUMN_GAS_LOCATION,
+            MySQLiteHelper.COLUMN_GAS_TIMING,
             MySQLiteHelper.COLUMN_GAS_TYPE,
-            MySQLiteHelper.COLUMN_RATING,
-            MySQLiteHelper.COLUMN_IMAGE };
+            MySQLiteHelper.COLUMN_GAS_RATING,
+            MySQLiteHelper.COLUMN_GAS_IMAGE };
+
+    private String[] allRestaurantColumns = {
+            MySQLiteHelper.COLUMN_RESTAURANT_ID,
+            MySQLiteHelper.COLUMN_RESTAURANT_NAME,
+            MySQLiteHelper.COLUMN_RESTAURANT_LOCATION,
+            MySQLiteHelper.COLUMN_RESTAURANT_TIMING,
+            MySQLiteHelper.COLUMN_CUISINE_TYPE,
+            MySQLiteHelper.COLUMN_RESTAURANT_RATING,
+            MySQLiteHelper.COLUMN_RESTAURANT_IMAGE };
+
+    private String[] allParkColumns = {
+            MySQLiteHelper.COLUMN_PARK_ID,
+            MySQLiteHelper.COLUMN_PARK_NAME,
+            MySQLiteHelper.COLUMN_PARK_LOCATION,
+            MySQLiteHelper.COLUMN_PARK_TIMING,
+            MySQLiteHelper.COLUMN_ATTRACTIONS,
+            MySQLiteHelper.COLUMN_PARK_RATING,
+            MySQLiteHelper.COLUMN_PARK_IMAGE };
 
     public HamdenPlacesDataScource(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -41,16 +59,16 @@ public class HamdenPlacesDataScource {
         dbHelper.close();
     }
 
-    public GasStation createDetails(String name, String location, String timing, String gasType, String rating, String image) {
+    public GasStation createGasDetails(String name, String location, String timing, String gasType, String rating, String image) {
         ContentValues values = new ContentValues();
-        values.put(MySQLiteHelper.COLUMN_NAME, name);
-        values.put(MySQLiteHelper.COLUMN_LOCATION, location);
-        values.put(MySQLiteHelper.COLUMN_TIMING, timing);
+        values.put(MySQLiteHelper.COLUMN_GAS_NAME, name);
+        values.put(MySQLiteHelper.COLUMN_GAS_LOCATION, location);
+        values.put(MySQLiteHelper.COLUMN_GAS_TIMING, timing);
         values.put(MySQLiteHelper.COLUMN_GAS_TYPE, gasType);
-        values.put(MySQLiteHelper.COLUMN_RATING, rating);
-        values.put(MySQLiteHelper.COLUMN_IMAGE, image);
+        values.put(MySQLiteHelper.COLUMN_GAS_RATING, rating);
+        values.put(MySQLiteHelper.COLUMN_GAS_IMAGE, image);
         long insertID = database.insert(MySQLiteHelper.TABLE_GAS_STATIONS,null,values);
-        Cursor cursor = database.query(MySQLiteHelper.TABLE_GAS_STATIONS,allGasStationColumns,MySQLiteHelper.COLUMN_ID + " = " + insertID,null,null,null,null);
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_GAS_STATIONS,allGasStationColumns,MySQLiteHelper.COLUMN_GAS_ID + " = " + insertID,null,null,null,null);
         cursor.moveToFirst();
         GasStation newGasStation = cursorToGasStation(cursor);
         cursor.close();
@@ -72,14 +90,96 @@ public class HamdenPlacesDataScource {
 
     public GasStation cursorToGasStation(Cursor cursor) {
         GasStation newGasStation = new GasStation();
-        newGasStation.setId(cursor.getLong(0));
-        newGasStation.setName(cursor.getString(1));
-        newGasStation.setLocation(cursor.getString(2));
-        newGasStation.setTiming(cursor.getString(3));
+        newGasStation.setGasId(cursor.getLong(0));
+        newGasStation.setGasName(cursor.getString(1));
+        newGasStation.setGasLocation(cursor.getString(2));
+        newGasStation.setGasTiming(cursor.getString(3));
         newGasStation.setGasType(cursor.getString(4));
-        newGasStation.setRating(cursor.getDouble(5));
-        newGasStation.setImage(cursor.getString(6));
+        newGasStation.setGasRating(cursor.getDouble(5));
+        newGasStation.setGasImage(cursor.getString(6));
         return newGasStation;
+    }
+
+    public Restaurant createRestaurantDetails(String name, String location, String timing, String gasType, String rating, String image) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_RESTAURANT_NAME, name);
+        values.put(MySQLiteHelper.COLUMN_RESTAURANT_LOCATION, location);
+        values.put(MySQLiteHelper.COLUMN_RESTAURANT_TIMING, timing);
+        values.put(MySQLiteHelper.COLUMN_CUISINE_TYPE, gasType);
+        values.put(MySQLiteHelper.COLUMN_RESTAURANT_RATING, rating);
+        values.put(MySQLiteHelper.COLUMN_RESTAURANT_IMAGE, image);
+        long insertID = database.insert(MySQLiteHelper.TABLE_RESTAURANTS,null,values);
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_RESTAURANTS,allRestaurantColumns,MySQLiteHelper.COLUMN_RESTAURANT_ID + " = " + insertID,null,null,null,null);
+        cursor.moveToFirst();
+        Restaurant newRestaurant = cursorToRestaurant(cursor);
+        cursor.close();
+        return newRestaurant;
+    }
+
+    public List<Restaurant> getAllRestaurants() {
+        List<Restaurant> restaurants = new ArrayList<Restaurant>();
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_RESTAURANTS,allRestaurantColumns,null,null,null,null,null);
+        cursor.moveToFirst();
+        while(! cursor.isAfterLast()) {
+            Restaurant restaurant = cursorToRestaurant(cursor);
+            restaurants.add(restaurant);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return restaurants;
+    }
+
+    public Restaurant cursorToRestaurant(Cursor cursor) {
+        Restaurant newRestaurant = new Restaurant();
+        newRestaurant.setRestaurantId(cursor.getLong(0));
+        newRestaurant.setRestaurantName(cursor.getString(1));
+        newRestaurant.setRestaurantLocation(cursor.getString(2));
+        newRestaurant.setRestaurantTiming(cursor.getString(3));
+        newRestaurant.setCuisineType(cursor.getString(4));
+        newRestaurant.setRestaurantRating(cursor.getDouble(5));
+        newRestaurant.setRestaurantImage(cursor.getString(6));
+        return newRestaurant;
+    }
+
+    public Park createParkDetails(String name, String location, String timing, String gasType, String rating, String image) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_PARK_NAME, name);
+        values.put(MySQLiteHelper.COLUMN_PARK_LOCATION, location);
+        values.put(MySQLiteHelper.COLUMN_PARK_TIMING, timing);
+        values.put(MySQLiteHelper.COLUMN_ATTRACTIONS, gasType);
+        values.put(MySQLiteHelper.COLUMN_PARK_RATING, rating);
+        values.put(MySQLiteHelper.COLUMN_PARK_IMAGE, image);
+        long insertID = database.insert(MySQLiteHelper.TABLE_PARKS,null,values);
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_PARKS,allParkColumns,MySQLiteHelper.COLUMN_PARK_ID + " = " + insertID,null,null,null,null);
+        cursor.moveToFirst();
+        Park newPark = cursorToPark(cursor);
+        cursor.close();
+        return newPark;
+    }
+
+    public List<Park> getAllParks() {
+        List<Park> parks = new ArrayList<Park>();
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_PARKS,allParkColumns,null,null,null,null,null);
+        cursor.moveToFirst();
+        while(! cursor.isAfterLast()) {
+            Park park = cursorToPark(cursor);
+            parks.add(park);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return parks;
+    }
+
+    public Park cursorToPark(Cursor cursor) {
+        Park newPark = new Park();
+        newPark.setParkId(cursor.getLong(0));
+        newPark.setParkName(cursor.getString(1));
+        newPark.setParkLocation(cursor.getString(2));
+        newPark.setParkTiming(cursor.getString(3));
+        newPark.setAttractions(cursor.getString(4));
+        newPark.setParkRating(cursor.getDouble(5));
+        newPark.setParkImage(cursor.getString(6));
+        return newPark;
     }
 
 
