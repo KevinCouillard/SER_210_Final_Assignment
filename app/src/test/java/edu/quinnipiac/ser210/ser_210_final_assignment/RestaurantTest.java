@@ -4,7 +4,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER210 Final Assignment
+ * Hamden Places Restaurant Class Test
+ * 4/29/21
+ */
 public class RestaurantTest {
 
     private Restaurant example_restaurant;
