@@ -1,6 +1,7 @@
 package edu.quinnipiac.ser210.ser_210_final_assignment;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
@@ -29,6 +30,9 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_info);
+
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

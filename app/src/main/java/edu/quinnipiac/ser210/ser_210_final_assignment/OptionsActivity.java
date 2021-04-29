@@ -1,6 +1,7 @@
 package edu.quinnipiac.ser210.ser_210_final_assignment;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
@@ -30,6 +31,9 @@ public class OptionsActivity extends AppCompatActivity {
         Button option2 = (Button) findViewById(R.id.option_2);
         Button option3 = (Button) findViewById(R.id.option_3);
         Button option4 = (Button) findViewById(R.id.option_4);
+
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
