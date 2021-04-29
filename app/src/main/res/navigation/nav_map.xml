@@ -2,4 +2,20 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_map"/>
+    android:id="@+id/nav_map"
+    app:startDestination="@id/optionsFragment">
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="edu.quinnipiac.ser210.ser_210_final_assignment.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/optionsFragment"
+        android:name="edu.quinnipiac.ser210.ser_210_final_assignment.OptionsFragment"
+        android:label="fragment_options"
+        tools:layout="@layout/fragment_options" >
+        <action
+            android:id="@+id/action_optionsFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+</navigation>

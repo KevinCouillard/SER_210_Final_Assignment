@@ -100,12 +100,12 @@ public class HamdenPlacesDataScource {
         return newGasStation;
     }
 
-    public Restaurant createRestaurantDetails(String name, String location, String timing, String gasType, String rating, String image) {
+    public Restaurant createRestaurantDetails(String name, String location, String timing, String cuisineType, String rating, String image) {
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_RESTAURANT_NAME, name);
         values.put(MySQLiteHelper.COLUMN_RESTAURANT_LOCATION, location);
         values.put(MySQLiteHelper.COLUMN_RESTAURANT_TIMING, timing);
-        values.put(MySQLiteHelper.COLUMN_CUISINE_TYPE, gasType);
+        values.put(MySQLiteHelper.COLUMN_CUISINE_TYPE, cuisineType);
         values.put(MySQLiteHelper.COLUMN_RESTAURANT_RATING, rating);
         values.put(MySQLiteHelper.COLUMN_RESTAURANT_IMAGE, image);
         long insertID = database.insert(MySQLiteHelper.TABLE_RESTAURANTS,null,values);
@@ -141,12 +141,12 @@ public class HamdenPlacesDataScource {
         return newRestaurant;
     }
 
-    public Park createParkDetails(String name, String location, String timing, String gasType, String rating, String image) {
+    public Park createParkDetails(String name, String location, String timing, String attractions, String rating, String image) {
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_PARK_NAME, name);
         values.put(MySQLiteHelper.COLUMN_PARK_LOCATION, location);
         values.put(MySQLiteHelper.COLUMN_PARK_TIMING, timing);
-        values.put(MySQLiteHelper.COLUMN_ATTRACTIONS, gasType);
+        values.put(MySQLiteHelper.COLUMN_ATTRACTIONS, attractions);
         values.put(MySQLiteHelper.COLUMN_PARK_RATING, rating);
         values.put(MySQLiteHelper.COLUMN_PARK_IMAGE, image);
         long insertID = database.insert(MySQLiteHelper.TABLE_PARKS,null,values);
