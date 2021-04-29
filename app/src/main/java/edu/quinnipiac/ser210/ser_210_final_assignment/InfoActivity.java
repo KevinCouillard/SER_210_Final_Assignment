@@ -15,11 +15,10 @@ public class InfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-        int optionSelected = getIntent().getExtras().getInt("optionSelected");
 
         switch (OptionsActivity.placeTypeHolder) {
             case 0:
-                if (optionSelected == 1) {
+                if (OptionsFragment.optionsSelected == 1) {
                     //need to reference the database and make a query to retrieve info
                     TextView gasStationInfoText = (TextView) findViewById(R.id.info_text);
                     gasStationInfoText.setText("Name: " + MainActivity.dataSource.getAllGasStations().get(0).getGasName() + "\n" +
@@ -30,7 +29,7 @@ public class InfoActivity extends AppCompatActivity {
                     ImageView gasStationImage = (ImageView) findViewById(R.id.info_image);
                     int resID = getResources().getIdentifier(MainActivity.dataSource.getAllGasStations().get(0).getGasImage(), "drawable", getPackageName());
                     gasStationImage.setImageResource(resID);
-                } else if (optionSelected == 2) {
+                } else if (OptionsFragment.optionsSelected == 2) {
                     TextView gasStationInfoText = (TextView) findViewById(R.id.info_text);
                     gasStationInfoText.setText("Name: " + MainActivity.dataSource.getAllGasStations().get(1).getGasName() + "\n" +
                             "Location: " + MainActivity.dataSource.getAllGasStations().get(1).getGasLocation() + "\n" +
@@ -40,7 +39,7 @@ public class InfoActivity extends AppCompatActivity {
                     ImageView gasStationImage = (ImageView) findViewById(R.id.info_image);
                     int resID = getResources().getIdentifier(MainActivity.dataSource.getAllGasStations().get(1).getGasImage(), "drawable", getPackageName());
                     gasStationImage.setImageResource(resID);
-                } else if (optionSelected == 3) {
+                } else if (OptionsFragment.optionsSelected == 3) {
                     TextView gasStationInfoText = (TextView) findViewById(R.id.info_text);
                     gasStationInfoText.setText("Name: " + MainActivity.dataSource.getAllGasStations().get(2).getGasName() + "\n" +
                             "Location: " + MainActivity.dataSource.getAllGasStations().get(2).getGasLocation() + "\n" +
@@ -50,7 +49,7 @@ public class InfoActivity extends AppCompatActivity {
                     ImageView gasStationImage = (ImageView) findViewById(R.id.info_image);
                     int resID = getResources().getIdentifier(MainActivity.dataSource.getAllGasStations().get(2).getGasImage(), "drawable", getPackageName());
                     gasStationImage.setImageResource(resID);
-                } else if (optionSelected == 4) {
+                } else if (OptionsFragment.optionsSelected == 4) {
                     TextView gasStationInfoText = (TextView) findViewById(R.id.info_text);
                     gasStationInfoText.setText("Name: " + MainActivity.dataSource.getAllGasStations().get(3).getGasName() + "\n" +
                             "Location: " + MainActivity.dataSource.getAllGasStations().get(3).getGasLocation() + "\n" +
@@ -63,7 +62,7 @@ public class InfoActivity extends AppCompatActivity {
                 }
                 break;
             case 1:
-                if (optionSelected == 1) {
+                if (OptionsFragment.optionsSelected == 1) {
                     TextView restaurantInfoText = (TextView) findViewById(R.id.info_text);
                     restaurantInfoText.setText("Name: " + MainActivity.dataSource.getAllRestaurants().get(0).getRestaurantName() + "\n" +
                             "Location: " + MainActivity.dataSource.getAllRestaurants().get(0).getRestaurantLocation() + "\n" +
@@ -73,7 +72,7 @@ public class InfoActivity extends AppCompatActivity {
                     ImageView restaurantImage = (ImageView) findViewById(R.id.info_image);
                     int resID = getResources().getIdentifier(MainActivity.dataSource.getAllRestaurants().get(0).getRestaurantImage(), "drawable", getPackageName());
                     restaurantImage.setImageResource(resID);
-                } else if (optionSelected == 2) {
+                } else if (OptionsFragment.optionsSelected == 2) {
                     TextView restaurantInfoText = (TextView) findViewById(R.id.info_text);
                     restaurantInfoText.setText("Name: " + MainActivity.dataSource.getAllRestaurants().get(1).getRestaurantName() + "\n" +
                             "Location: " + MainActivity.dataSource.getAllRestaurants().get(1).getRestaurantLocation() + "\n" +
@@ -83,7 +82,7 @@ public class InfoActivity extends AppCompatActivity {
                     ImageView restaurantImage = (ImageView) findViewById(R.id.info_image);
                     int resID = getResources().getIdentifier(MainActivity.dataSource.getAllRestaurants().get(1).getRestaurantImage(), "drawable", getPackageName());
                     restaurantImage.setImageResource(resID);
-                } else if (optionSelected == 3) {
+                } else if (OptionsFragment.optionsSelected == 3) {
                     TextView restaurantInfoText = (TextView) findViewById(R.id.info_text);
                     restaurantInfoText.setText("Name: " + MainActivity.dataSource.getAllRestaurants().get(2).getRestaurantName() + "\n" +
                             "Location: " + MainActivity.dataSource.getAllRestaurants().get(2).getRestaurantLocation() + "\n" +
@@ -93,7 +92,7 @@ public class InfoActivity extends AppCompatActivity {
                     ImageView restaurantImage = (ImageView) findViewById(R.id.info_image);
                     int resID = getResources().getIdentifier(MainActivity.dataSource.getAllRestaurants().get(2).getRestaurantImage(), "drawable", getPackageName());
                     restaurantImage.setImageResource(resID);
-                } else if (optionSelected == 4) {
+                } else if (OptionsFragment.optionsSelected == 4) {
                     TextView restaurantInfoText = (TextView) findViewById(R.id.info_text);
                     restaurantInfoText.setText("Name: " + MainActivity.dataSource.getAllRestaurants().get(3).getRestaurantName() + "\n" +
                             "Location: " + MainActivity.dataSource.getAllRestaurants().get(3).getRestaurantLocation() + "\n" +
@@ -106,7 +105,7 @@ public class InfoActivity extends AppCompatActivity {
                 }
                 break;
             case 2:
-                if (optionSelected == 1) {
+                if (OptionsFragment.optionsSelected == 1) {
                     TextView parkInfoText = (TextView) findViewById(R.id.info_text);
                     parkInfoText.setText("Name: " + MainActivity.dataSource.getAllParks().get(0).getParkName() + "\n" +
                             "Location: " + MainActivity.dataSource.getAllParks().get(0).getParkLocation() + "\n" +
@@ -116,7 +115,7 @@ public class InfoActivity extends AppCompatActivity {
                     ImageView parkImage = (ImageView) findViewById(R.id.info_image);
                     int resID = getResources().getIdentifier(MainActivity.dataSource.getAllParks().get(0).getParkImage(), "drawable", getPackageName());
                     parkImage.setImageResource(resID);
-                } else if (optionSelected == 2) {
+                } else if (OptionsFragment.optionsSelected == 2) {
                     TextView parkInfoText = (TextView) findViewById(R.id.info_text);
                     parkInfoText.setText("Name: " + MainActivity.dataSource.getAllParks().get(1).getParkName() + "\n" +
                             "Location: " + MainActivity.dataSource.getAllParks().get(1).getParkLocation() + "\n" +
@@ -126,7 +125,7 @@ public class InfoActivity extends AppCompatActivity {
                     ImageView parkImage = (ImageView) findViewById(R.id.info_image);
                     int resID = getResources().getIdentifier(MainActivity.dataSource.getAllParks().get(1).getParkImage(), "drawable", getPackageName());
                     parkImage.setImageResource(resID);
-                } else if (optionSelected == 3) {
+                } else if (OptionsFragment.optionsSelected == 3) {
                     TextView parkInfoText = (TextView) findViewById(R.id.info_text);
                     parkInfoText.setText("Name: " + MainActivity.dataSource.getAllParks().get(2).getParkName() + "\n" +
                             "Location: " + MainActivity.dataSource.getAllParks().get(2).getParkLocation() + "\n" +
@@ -136,7 +135,7 @@ public class InfoActivity extends AppCompatActivity {
                     ImageView parkImage = (ImageView) findViewById(R.id.info_image);
                     int resID = getResources().getIdentifier(MainActivity.dataSource.getAllParks().get(2).getParkImage(), "drawable", getPackageName());
                     parkImage.setImageResource(resID);
-                } else if (optionSelected == 4) {
+                } else if (OptionsFragment.optionsSelected == 4) {
                     TextView parkInfoText = (TextView) findViewById(R.id.info_text);
                     parkInfoText.setText("Name: " + MainActivity.dataSource.getAllParks().get(3).getParkName() + "\n" +
                             "Location: " + MainActivity.dataSource.getAllParks().get(3).getParkLocation() + "\n" +
@@ -149,5 +148,5 @@ public class InfoActivity extends AppCompatActivity {
                 }
                 break;
         }
-        }
+    }
 }

@@ -24,6 +24,7 @@ public class OptionsFragment extends Fragment implements View.OnClickListener {
     private Button option2;
     private Button option3;
     private Button option4;
+    public static int optionsSelected;
     NavController navController = null;
 
     public OptionsFragment() {
@@ -87,20 +88,16 @@ public class OptionsFragment extends Fragment implements View.OnClickListener {
         Intent intent = new Intent(this.getActivity(), InfoActivity.class);
         switch (v.getId()) {
             case R.id.option_1:
-                intent.putExtra("optionSelected", 1);
-                startActivity(intent);
+                optionsSelected = 1;
                 break;
             case R.id.option_2:
-                intent.putExtra("optionSelected", 2);
-                startActivity(intent);
+                optionsSelected = 2;
                 break;
             case R.id.option_3:
-                intent.putExtra("optionSelected", 3);
-                startActivity(intent);
+                optionsSelected = 3;
                 break;
             case R.id.option_4:
-                intent.putExtra("optionSelected", 4);
-                startActivity(intent);
+                optionsSelected = 4;
                 break;
         }
         navController.navigate(R.id.action_optionsFragment_to_infoFragment);
