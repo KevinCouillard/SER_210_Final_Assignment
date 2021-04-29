@@ -8,14 +8,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER210 Final Assignment
+ * Hamden Places Info Activity
+ * 4/29/21
+ */
 public class InfoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-
+/*
         switch (OptionsActivity.placeTypeHolder) {
             case 0:
                 if (OptionsFragment.optionsSelected == 1) {
@@ -148,5 +153,7 @@ public class InfoActivity extends AppCompatActivity {
                 }
                 break;
         }
+
+ */
     }
 }

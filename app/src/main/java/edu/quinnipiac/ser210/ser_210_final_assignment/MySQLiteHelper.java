@@ -5,9 +5,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.ImageView;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER210 Final Assignment
+ * Hamden Places SQLiteHelper Class
+ * 4/29/21
+ */
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
+    //initializing the tables & columns as strings
     public static final String TABLE_GAS_STATIONS = "GasStations";
     public static final String COLUMN_GAS_ID = "_id";
     public static final String COLUMN_GAS_NAME = "name";
@@ -35,10 +41,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PARK_RATING = "rating";
     public static final String COLUMN_PARK_IMAGE = "image";
 
+    //initializing the database name as a string & the version as an int
     public static final String DATABASE_NAME = "HamdenPlaces";
     private static final int DATABASE_VERSION = 1;
 
-    // Database creation sql statement
+    // Database table creation sql statements
     private static final String GAS_STATION_TABLE_CREATE = "create table "
             + TABLE_GAS_STATIONS + "(" + COLUMN_GAS_ID
             + " integer primary key autoincrement, " + COLUMN_GAS_NAME
@@ -66,6 +73,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //executes the sql table create statements adding the tables to the database
         db.execSQL(GAS_STATION_TABLE_CREATE);
         db.execSQL(RESTAURANT_TABLE_CREATE);
         db.execSQL(PARK_TABLE_CREATE);
@@ -73,6 +81,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        //upgrades the database version
         Log.w(MySQLiteHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                     + newVersion + ", which will destroy all old data");

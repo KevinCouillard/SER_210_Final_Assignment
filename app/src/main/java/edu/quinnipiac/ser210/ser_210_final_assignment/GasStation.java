@@ -2,8 +2,14 @@ package edu.quinnipiac.ser210.ser_210_final_assignment;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER210 Final Assignment
+ * Hamden Places Gas Station Class
+ * 4/29/21
+ */
 public class GasStation {
+    //Simple class for Gas Station object including getters & setters for column values
     private long id;
     private String name;
     private String location;

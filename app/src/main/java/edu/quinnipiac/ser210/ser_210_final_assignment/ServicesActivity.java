@@ -5,7 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER210 Final Assignment
+ * Hamden Places Services Activity
+ * 4/29/21
+ */
 public class ServicesActivity extends AppCompatActivity {
 
     @Override

@@ -5,7 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER210 Final Assignment
+ * Hamden Places Options Activity
+ * 4/29/21
+ */
 public class OptionsActivity extends AppCompatActivity {
     public static int placeTypeHolder;
 

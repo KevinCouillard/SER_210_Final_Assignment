@@ -10,13 +10,19 @@ import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER210 Final Assignment
+ * Hamden Places Data Source Class
+ * 4/29/21
+ */
 public class HamdenPlacesDataScource {
 
     // Database fields
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
 
+    //Array of strings representing all columns in each table
     private String[] allGasStationColumns = {
             MySQLiteHelper.COLUMN_GAS_ID,
             MySQLiteHelper.COLUMN_GAS_NAME,
@@ -49,6 +55,7 @@ public class HamdenPlacesDataScource {
     }
 
     public void open () throws SQLException {
+        //initialize (open) database
         database = dbHelper.getWritableDatabase();
         dbHelper.onUpgrade(database,1,2);
     }
@@ -60,6 +67,7 @@ public class HamdenPlacesDataScource {
     }
 
     public GasStation createGasDetails(String name, String location, String timing, String gasType, String rating, String image) {
+        //creates a gas station object, inserts it in gas station table, & returns the gas station object
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_GAS_NAME, name);
         values.put(MySQLiteHelper.COLUMN_GAS_LOCATION, location);
@@ -76,6 +84,7 @@ public class HamdenPlacesDataScource {
     }
 
     public List<GasStation> getAllGasStations() {
+        //gets all the gas stations in the gas station table and returns as an array list
         List<GasStation> gasStations = new ArrayList<GasStation>();
         Cursor cursor = database.query(MySQLiteHelper.TABLE_GAS_STATIONS,allGasStationColumns,null,null,null,null,null);
         cursor.moveToFirst();
@@ -89,6 +98,7 @@ public class HamdenPlacesDataScource {
     }
 
     public GasStation cursorToGasStation(Cursor cursor) {
+        //converts the cursor object for the new gas station into a gas station object and returns it
         GasStation newGasStation = new GasStation();
         newGasStation.setGasId(cursor.getLong(0));
         newGasStation.setGasName(cursor.getString(1));
@@ -101,6 +111,7 @@ public class HamdenPlacesDataScource {
     }
 
     public Restaurant createRestaurantDetails(String name, String location, String timing, String cuisineType, String rating, String image) {
+        //creates a restaurant object, inserts it in restaurant table, & returns the restaurant object
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_RESTAURANT_NAME, name);
         values.put(MySQLiteHelper.COLUMN_RESTAURANT_LOCATION, location);
@@ -117,6 +128,7 @@ public class HamdenPlacesDataScource {
     }
 
     public List<Restaurant> getAllRestaurants() {
+        //gets all the restaurants in the restaurant table and returns as an array list
         List<Restaurant> restaurants = new ArrayList<Restaurant>();
         Cursor cursor = database.query(MySQLiteHelper.TABLE_RESTAURANTS,allRestaurantColumns,null,null,null,null,null);
         cursor.moveToFirst();
@@ -130,6 +142,7 @@ public class HamdenPlacesDataScource {
     }
 
     public Restaurant cursorToRestaurant(Cursor cursor) {
+        //converts the cursor object for the new restaurant into a restaurant object and returns it
         Restaurant newRestaurant = new Restaurant();
         newRestaurant.setRestaurantId(cursor.getLong(0));
         newRestaurant.setRestaurantName(cursor.getString(1));
@@ -142,6 +155,7 @@ public class HamdenPlacesDataScource {
     }
 
     public Park createParkDetails(String name, String location, String timing, String attractions, String rating, String image) {
+        //creates a park object, inserts it in park table, & returns the park object
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_PARK_NAME, name);
         values.put(MySQLiteHelper.COLUMN_PARK_LOCATION, location);
@@ -158,6 +172,7 @@ public class HamdenPlacesDataScource {
     }
 
     public List<Park> getAllParks() {
+        //gets all the parks in the park table and returns as an array list
         List<Park> parks = new ArrayList<Park>();
         Cursor cursor = database.query(MySQLiteHelper.TABLE_PARKS,allParkColumns,null,null,null,null,null);
         cursor.moveToFirst();
@@ -171,6 +186,7 @@ public class HamdenPlacesDataScource {
     }
 
     public Park cursorToPark(Cursor cursor) {
+        //converts the cursor object for the new park into a park object and returns it
         Park newPark = new Park();
         newPark.setParkId(cursor.getLong(0));
         newPark.setParkName(cursor.getString(1));

@@ -18,13 +18,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER210 Final Assignment
+ * Hamden Places Options Fragment Class
+ * 4/29/21
+ */
 public class OptionsFragment extends Fragment implements View.OnClickListener {
     private Button option1;
     private Button option2;
     private Button option3;
     private Button option4;
     public static int optionsSelected;
+    //initialize nav controller
     NavController navController = null;
 
     public OptionsFragment() {
@@ -41,6 +47,8 @@ public class OptionsFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_options, container,false);
+
+        //initialize buttons & set on click listener on each
         option1 = (Button) layout.findViewById(R.id.option_1);
         option2 = (Button) layout.findViewById(R.id.option_2);
         option3 = (Button) layout.findViewById(R.id.option_3);
@@ -56,36 +64,35 @@ public class OptionsFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        navController = Navigation.findNavController(view);
-        view.findViewById(R.id.option_1).setOnClickListener(this);
-        view.findViewById(R.id.option_2).setOnClickListener(this);
-        view.findViewById(R.id.option_3).setOnClickListener(this);
-        view.findViewById(R.id.option_4).setOnClickListener(this);
 
+        //link the nav controller to the view
+        navController = Navigation.findNavController(view);
+
+        //if to check the place type the user selects and sets the location/place names to the buttons accordingly
         if (getActivity().getIntent().getExtras().getInt("placeTypeSelected") == 0) {
-            option1.setText("Hamden Ultra Sunoco");
-            option2.setText("7-Eleven");
-            option3.setText("Cumberland Farms");
-            option4.setText("Shea's Service Center");
+            option1.setText(MainActivity.dataSource.getAllGasStations().get(0).getGasName());
+            option2.setText(MainActivity.dataSource.getAllGasStations().get(1).getGasName());
+            option3.setText(MainActivity.dataSource.getAllGasStations().get(2).getGasName());
+            option4.setText(MainActivity.dataSource.getAllGasStations().get(3).getGasName());
             OptionsActivity.placeTypeHolder = 0;
         } else if (getActivity().getIntent().getExtras().getInt("placeTypeSelected") == 1) {
-            option1.setText("Mikro Depot");
-            option2.setText("Bomb Wings & Rice Bar");
-            option3.setText("Freskos");
-            option4.setText("The Cellar on Treadwell");
+            option1.setText(MainActivity.dataSource.getAllRestaurants().get(0).getRestaurantName());
+            option2.setText(MainActivity.dataSource.getAllRestaurants().get(1).getRestaurantName());
+            option3.setText(MainActivity.dataSource.getAllRestaurants().get(2).getRestaurantName());
+            option4.setText(MainActivity.dataSource.getAllRestaurants().get(3).getRestaurantName());
             OptionsActivity.placeTypeHolder = 1;
         } else if (getActivity().getIntent().getExtras().getInt("placeTypeSelected") == 2) {
-            option1.setText("Sleeping Giant State Park");
-            option2.setText("West Rock Ridge State Park");
-            option3.setText("East Rock Park");
-            option4.setText("Edgerton Park");
+            option1.setText(MainActivity.dataSource.getAllParks().get(0).getParkName());
+            option2.setText(MainActivity.dataSource.getAllParks().get(1).getParkName());
+            option3.setText(MainActivity.dataSource.getAllParks().get(2).getParkName());
+            option4.setText(MainActivity.dataSource.getAllParks().get(3).getParkName());
             OptionsActivity.placeTypeHolder = 2;
         }
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this.getActivity(), InfoActivity.class);
+        //switch to check which location/place is selected to set the static variable to keep track of the user selection
         switch (v.getId()) {
             case R.id.option_1:
                 optionsSelected = 1;
@@ -100,6 +107,7 @@ public class OptionsFragment extends Fragment implements View.OnClickListener {
                 optionsSelected = 4;
                 break;
         }
+        //call navigate on the nav controller to move to the next fragment on location/place selected
         navController.navigate(R.id.action_optionsFragment_to_infoFragment);
     }
 }

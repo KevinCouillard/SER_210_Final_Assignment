@@ -1,6 +1,12 @@
 package edu.quinnipiac.ser210.ser_210_final_assignment;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER210 Final Assignment
+ * Hamden Places Park Class
+ * 4/29/21
+ */
 public class Park {
+    //Simple class for Park object including getters & setters for column values
     private long id;
     private String name;
     private String location;
