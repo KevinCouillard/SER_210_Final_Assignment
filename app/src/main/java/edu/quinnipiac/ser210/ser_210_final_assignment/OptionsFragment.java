@@ -95,16 +95,16 @@ public class OptionsFragment extends Fragment implements View.OnClickListener {
         //switch to check which location/place is selected to set the static variable to keep track of the user selection
         switch (v.getId()) {
             case R.id.option_1:
-                optionsSelected = 1;
+                optionsSelected = 0;
                 break;
             case R.id.option_2:
-                optionsSelected = 2;
+                optionsSelected = 1;
                 break;
             case R.id.option_3:
-                optionsSelected = 3;
+                optionsSelected = 2;
                 break;
             case R.id.option_4:
-                optionsSelected = 4;
+                optionsSelected = 3;
                 break;
         }
         //call navigate on the nav controller to move to the next fragment on location/place selected
