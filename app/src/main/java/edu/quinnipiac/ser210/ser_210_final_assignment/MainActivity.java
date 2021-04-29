@@ -154,7 +154,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_share:
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT,"(EditText)findViewById(R.id.score).getText().toString");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT,"I'm using this amazing app which will help me find the " +
+                        "closest gas station or park or restaurant");
                 provider.setShareIntent(sharingIntent);
                 break;
             default:
