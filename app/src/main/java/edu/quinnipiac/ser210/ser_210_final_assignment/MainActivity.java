@@ -1,9 +1,14 @@
 package edu.quinnipiac.ser210.ser_210_final_assignment;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ShareActionProvider;
+import androidx.core.view.MenuItemCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -17,10 +22,12 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     //data source containing all location information, static to be referenced from other classes
     public static HamdenPlacesDataScource dataSource;
+    private ShareActionProvider provider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
         //initializing the data source and opening it
         dataSource = new HamdenPlacesDataScource(this);
@@ -123,6 +130,34 @@ public class MainActivity extends AppCompatActivity {
         dataSource.createParkDetails(parkInfo3[0], parkInfo3[1], parkInfo3[2], parkInfo3[3], parkInfo3[4], parkInfo3[5]);
         dataSource.createParkDetails(parkInfo4[0], parkInfo4[1], parkInfo4[2], parkInfo4[3], parkInfo4[4], parkInfo4[5]);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.options,menu);
+        provider = (ShareActionProvider) MenuItemCompat.getActionProvider((MenuItem) menu.findItem(R.id.action_share));
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.change_color:
+                //changes color
+                Utils.changeToTheme(this, (int)(Math.random()*6));
+                break;
+            case R.id.action_share:
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT,"(EditText)findViewById(R.id.score).getText().toString");
+                provider.setShareIntent(sharingIntent);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void startApp(View view) {

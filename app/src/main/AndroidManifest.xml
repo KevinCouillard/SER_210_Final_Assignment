@@ -9,9 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SER_210_Final_Assignment">
-        <activity android:name=".InfoActivity"></activity>
-        <activity android:name=".OptionsActivity" />
-        <activity android:name=".ServicesActivity" />
+        <activity android:name=".InfoActivity"
+            android:theme="@style/Theme.SER_210_Final_Assignment"
+            android:screenOrientation="sensor"></activity>
+        <activity android:name=".OptionsActivity"
+            android:label="Options"
+            android:screenOrientation="sensor"
+            android:theme="@style/Theme.SER_210_Final_Assignment"/>
+        <activity android:name=".ServicesActivity"
+            android:label="Services"
+            android:theme="@style/Theme.SER_210_Final_Assignment"
+            android:screenOrientation="sensor"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
