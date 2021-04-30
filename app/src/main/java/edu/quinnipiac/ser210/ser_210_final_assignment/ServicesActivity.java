@@ -28,7 +28,7 @@ public class ServicesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_services);
 
         ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     public void start_options(View view) {
@@ -72,6 +72,9 @@ public class ServicesActivity extends AppCompatActivity {
                 sharingIntent.putExtra(Intent.EXTRA_TEXT,"(EditText)findViewById(R.id.score).getText().toString");
                 provider.setShareIntent(sharingIntent);
                 break;
+            case android.R.id.home:
+                onBackPressed();
+                return true;
             default: return super.onOptionsItemSelected(item);
 
         }

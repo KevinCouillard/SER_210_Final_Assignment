@@ -33,7 +33,7 @@ public class OptionsActivity extends AppCompatActivity {
         Button option4 = (Button) findViewById(R.id.option_4);
 
         ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -57,6 +57,9 @@ public class OptionsActivity extends AppCompatActivity {
                 sharingIntent.putExtra(Intent.EXTRA_TEXT,"I'm using this amazing app which will help me find the closest gas station or park or restaurant");
                 provider.setShareIntent(sharingIntent);
                 break;
+            case android.R.id.home:
+                onBackPressed();
+                return true;
             default: return super.onOptionsItemSelected(item);
 
         }

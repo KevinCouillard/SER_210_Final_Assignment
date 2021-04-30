@@ -32,7 +32,7 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
 
         ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -56,6 +56,9 @@ public class InfoActivity extends AppCompatActivity {
                 sharingIntent.putExtra(Intent.EXTRA_TEXT,"(EditText)findViewById(R.id.score).getText().toString");
                 provider.setShareIntent(sharingIntent);
                 break;
+            case android.R.id.home:
+                onBackPressed();
+                return true;
             default: return super.onOptionsItemSelected(item);
 
         }

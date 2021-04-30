@@ -131,9 +131,6 @@ public class MainActivity extends AppCompatActivity {
         dataSource.createParkDetails(parkInfo3[0], parkInfo3[1], parkInfo3[2], parkInfo3[3], parkInfo3[4], parkInfo3[5]);
         dataSource.createParkDetails(parkInfo4[0], parkInfo4[1], parkInfo4[2], parkInfo4[3], parkInfo4[4], parkInfo4[5]);
 
-
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
